@@ -27,7 +27,7 @@ const featuredProjects = getFeaturedProjects();
         <p class="eyebrow">Explore o Escaninho</p>
         <h2>Três caminhos para começar</h2>
       </div>
-      <div class="card-grid card-grid--3">
+      <div class="card-grid">
         <NavCard
           title="Acervo"
           description="Materiais e referências de História, Filosofia e atividades adaptadas."
@@ -87,26 +87,9 @@ const featuredProjects = getFeaturedProjects();
           desses projetos esteja armazenado no Escaninho Digital.
         </p>
       </div>
-      <div class="card-grid card-grid--3">
+      <div class="card-grid">
         {featuredProjects.map((project) => <ProjectCard project={project} />)}
       </div>
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  .card-grid {
-    display: grid;
-    gap: var(--space-md);
-  }
-
-  .card-grid--3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 860px) {
-    .card-grid--3 {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

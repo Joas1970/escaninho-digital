@@ -144,3 +144,33 @@ button:focus-visible {
 .skip-link:focus {
   left: 0;
 }
+
+/* Utilitários reutilizáveis (antes duplicados em várias páginas/componentes) */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.card-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 860px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.content-block {
+  max-width: 56ch;
+}
