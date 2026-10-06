@@ -1,7 +1,9 @@
 # PLANO — Escaninho Digital (nova versão)
 
-> Documento de arquitetura e planejamento. Nenhuma página final foi implementada
-> ainda — esta é a etapa de análise e decisão, conforme solicitado.
+> Documento de arquitetura e planejamento. A estrutura inicial descrita aqui
+> já foi implementada (ver [README.md](./README.md) para como rodar o
+> projeto); este documento permanece como referência de arquitetura e guia
+> para as próximas etapas.
 
 ## 0. Análise da pasta atual
 

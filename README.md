@@ -10,9 +10,10 @@ direciona o visitante ao site original de cada um.
 
 ## Status
 
-Projeto em fase de planejamento. Veja [PLANO-ESCANINHO.md](./PLANO-ESCANINHO.md)
-para a arquitetura de informação, o mapa de páginas, o sistema de cards de
-projetos, a tecnologia recomendada e as próximas etapas de desenvolvimento.
+Estrutura inicial implementada em [Astro](https://astro.build/). Veja
+[PLANO-ESCANINHO.md](./PLANO-ESCANINHO.md) para a arquitetura de informação,
+o mapa de páginas, o sistema de cards de projetos e as etapas de
+desenvolvimento.
 
 ## Ecossistema
 
@@ -20,12 +21,23 @@ projetos, a tecnologia recomendada e as próximas etapas de desenvolvimento.
 - `montarparaaprender.com.br` — projeto pedagógico específico.
 - `escaninhodigital.com.br` — este projeto: hub de curadoria e descoberta.
 
-## Stack (proposta)
+## Stack
 
 [Astro](https://astro.build/) — geração estática, componentes reutilizáveis,
 SEO de primeira classe e deploy direto na [Vercel](https://vercel.com/).
 
 ## Desenvolvimento
 
-Ainda não iniciado — aguardando aprovação do plano descrito em
-`PLANO-ESCANINHO.md`.
+```bash
+npm install     # instala as dependências
+npm run dev     # inicia o servidor local em http://localhost:4321
+npm run build   # gera a versão estática de produção em ./dist
+npm run preview # pré-visualiza o build de produção localmente
+```
+
+## Adicionando um novo projeto ao ecossistema
+
+Os cards de "Projetos" são gerados a partir de
+[src/data/projects.ts](./src/data/projects.ts). Para adicionar um novo
+projeto, basta acrescentar um objeto a esse arquivo (título, descrição,
+categoria, imagem e URL) — nenhum HTML precisa ser escrito manualmente.
