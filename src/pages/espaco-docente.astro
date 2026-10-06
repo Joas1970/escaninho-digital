@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageIntro from "../components/PageIntro.astro";
+---
+
+<BaseLayout
+  title="Espaço Docente"
+  description="Reflexões, práticas e apoio para o trabalho cotidiano do professor, no Escaninho Digital."
+  path="/espaco-docente/"
+>
+  <section class="section">
+    <div class="container">
+      <PageIntro
+        eyebrow="Espaço Docente"
+        title="Espaço Docente"
+        text="Um espaço voltado à prática e à reflexão docente: planejamento, metodologias, formação continuada e trocas entre professores."
+      />
+      <div class="content-block">
+        <p>
+          Esta seção está em construção. A proposta é reunir aqui reflexões e
+          recursos de apoio à prática docente — não um repositório de
+          materiais prontos, mas um espaço de reflexão sobre o ofício de
+          ensinar.
+        </p>
+        <p>
+          Sugestões de pauta ou de conteúdo podem ser enviadas pela página de
+          <a href="/contato/">Contato</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 56ch;
+  }
+</style>

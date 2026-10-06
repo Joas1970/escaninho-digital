@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageIntro from "../../../components/PageIntro.astro";
+---
+
+<BaseLayout
+  title="Atividades adaptadas"
+  description="Recursos e atividades pensados para diferentes ritmos e formas de aprender, organizados pelo Escaninho Digital."
+  path="/acervo/atividades-adaptadas/"
+>
+  <section class="section">
+    <div class="container">
+      <PageIntro
+        eyebrow="Acervo · Atividades adaptadas"
+        title="Atividades adaptadas"
+        text="Recursos pensados para diferentes ritmos, formas de aprender e necessidades específicas em sala de aula."
+      />
+      <div class="content-block">
+        <p>
+          Esta seção está em construção. Aqui serão organizados, aos poucos,
+          materiais e propostas de atividades adaptadas, com atenção à
+          inclusão e à diversidade de formas de aprendizagem.
+        </p>
+        <p>
+          O projeto <a href="/projetos/montar-para-aprender/">Montar para
+          Aprender</a> aprofunda esse tema com recursos próprios — vale a
+          pena conhecê-lo.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 56ch;
+  }
+</style>

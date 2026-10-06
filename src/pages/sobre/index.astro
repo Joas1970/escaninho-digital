@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageIntro from "../../components/PageIntro.astro";
+---
+
+<BaseLayout
+  title="Sobre o Escaninho Digital"
+  description="Conheça o conceito, a função e os princípios do Escaninho Digital."
+  path="/sobre/"
+>
+  <section class="section">
+    <div class="container">
+      <PageIntro
+        eyebrow="Sobre"
+        title="Sobre o Escaninho Digital"
+        text="Um hub de curadoria educacional — não um repositório de código de outros projetos."
+      />
+      <div class="content-block">
+        <p>
+          O Escaninho Digital é um projeto educacional voltado à organização,
+          curadoria e compartilhamento de recursos relacionados à educação,
+          à História, à Filosofia, às Humanidades, à tecnologia educacional e
+          à prática docente.
+        </p>
+        <p>
+          O Escaninho apresenta, de forma organizada e contextualizada,
+          projetos e iniciativas independentes do mesmo ecossistema
+          educacional — como o <a href="/projetos/">Montar para Aprender, o
+          Acervo Visual de Humanidades e o Jornal Escolar</a>. Quando
+          necessário, o visitante é redirecionado ao projeto original.
+        </p>
+        <p>
+          Para saber mais sobre quem desenvolve este e outros projetos do
+          ecossistema, visite a página do
+          <a href="/sobre/professor-joas-alves/">Professor Joas Alves</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 56ch;
+  }
+</style>

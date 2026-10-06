@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { projects } from "../../data/projects";
+---
+
+<BaseLayout
+  title="Projetos"
+  description="Projetos independentes do ecossistema educacional apresentados pelo Escaninho Digital."
+  path="/projetos/"
+>
+  <section class="section">
+    <div class="container">
+      <PageIntro
+        eyebrow="Projetos"
+        title="Iniciativas do ecossistema educacional"
+        text="O Escaninho apresenta, organiza e encaminha para projetos independentes. O código-fonte e o conteúdo integral de cada projeto permanecem em seus próprios domínios e repositórios."
+      />
+      <div class="card-grid">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .card-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 860px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

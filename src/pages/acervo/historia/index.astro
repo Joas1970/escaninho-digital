@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageIntro from "../../../components/PageIntro.astro";
+---
+
+<BaseLayout
+  title="História"
+  description="Referências, linhas do tempo e materiais de apoio para o ensino de História, organizados pelo Escaninho Digital."
+  path="/acervo/historia/"
+>
+  <section class="section">
+    <div class="container">
+      <PageIntro
+        eyebrow="Acervo · História"
+        title="História"
+        text="Espaço dedicado a referências, contextos e materiais de apoio para o ensino e o estudo de História."
+      />
+      <div class="content-block">
+        <p>
+          Esta seção está em construção. Aqui serão organizados, aos poucos,
+          materiais, recomendações e recursos relacionados ao ensino de
+          História — sempre com curadoria e contextualização, e nunca como
+          simples repositório de arquivos soltos.
+        </p>
+        <p>
+          Se você procura um recurso específico ou quer sugerir um material,
+          utilize a página de <a href="/contato/">Contato</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 56ch;
+  }
+</style>

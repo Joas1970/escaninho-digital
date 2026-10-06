@@ -1,0 +1,32 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  text?: string;
+}
+
+const { eyebrow, title, text } = Astro.props;
+---
+
+<div class="page-intro">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h1 class="page-intro__title">{title}</h1>
+  {text && <p class="page-intro__text">{text}</p>}
+</div>
+
+<style>
+  .page-intro {
+    max-width: 48rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-intro__title {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+  }
+
+  .page-intro__text {
+    color: var(--color-text);
+    font-size: 1.05rem;
+    max-width: 56ch;
+  }
+</style>

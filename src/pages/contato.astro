@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageIntro from "../components/PageIntro.astro";
+
+const contactEmail = "contato@escaninhodigital.com.br";
+---
+
+<BaseLayout
+  title="Contato"
+  description="Fale com o Escaninho Digital para sugestões de materiais, parcerias ou dúvidas."
+  path="/contato/"
+>
+  <section class="section">
+    <div class="container">
+      <PageIntro
+        eyebrow="Contato"
+        title="Fale com o Escaninho Digital"
+        text="Sugestões de materiais, parcerias ou dúvidas sobre os projetos do ecossistema podem ser enviadas pelos canais abaixo."
+      />
+      <div class="content-block">
+        <p>
+          <strong>E-mail:</strong>
+          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        </p>
+        <p>
+          Para assuntos relacionados à autoria e à trajetória profissional,
+          visite
+          <a
+            href="https://www.professorjoas.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            professorjoas.com.br
+            <span class="sr-only"> (abre em uma nova aba, site externo)</span>
+          </a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 56ch;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import NavCard from "../../components/NavCard.astro";
+---
+
+<BaseLayout
+  title="Acervo"
+  description="Acervo do Escaninho Digital: materiais, referências e atividades de História, Filosofia e Atividades adaptadas."
+  path="/acervo/"
+>
+  <section class="section">
+    <div class="container">
+      <PageIntro
+        eyebrow="Acervo"
+        title="Materiais e referências para a sala de aula"
+        text="O Acervo reúne conteúdos próprios do Escaninho Digital, organizados por área, para apoiar o planejamento e a prática docente."
+      />
+
+      <div class="card-grid">
+        <NavCard
+          title="História"
+          description="Referências, linhas do tempo e materiais de apoio para o ensino de História."
+          href="/acervo/historia/"
+        />
+        <NavCard
+          title="Filosofia"
+          description="Textos, conceitos e propostas de atividade para introduzir o pensamento filosófico."
+          href="/acervo/filosofia/"
+        />
+        <NavCard
+          title="Atividades adaptadas"
+          description="Recursos pensados para diferentes ritmos e formas de aprender."
+          href="/acervo/atividades-adaptadas/"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .card-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 860px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

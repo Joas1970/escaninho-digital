@@ -1,0 +1,71 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+}
+
+const { title, description, href } = Astro.props;
+---
+
+<a class="nav-card" href={href}>
+  <span class="nav-card__icon" aria-hidden="true">
+    <slot name="icon" />
+  </span>
+  <span class="nav-card__title">{title}</span>
+  <span class="nav-card__description">{description}</span>
+  <span class="nav-card__arrow" aria-hidden="true">→</span>
+</a>
+
+<style>
+  .nav-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--color-text);
+    background: var(--color-bg);
+    transition: border-color var(--transition), transform var(--transition);
+  }
+
+  .nav-card:hover,
+  .nav-card:focus-visible {
+    border-color: var(--color-gold);
+    transform: translateY(-2px);
+  }
+
+  .nav-card__icon {
+    color: var(--color-gold);
+    margin-bottom: var(--space-xs);
+  }
+
+  .nav-card__icon :global(svg) {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .nav-card__title {
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  .nav-card__description {
+    color: var(--color-gray);
+    font-size: 0.92rem;
+  }
+
+  .nav-card__arrow {
+    margin-top: auto;
+    padding-top: var(--space-xs);
+    color: var(--color-gold);
+    transition: transform var(--transition);
+  }
+
+  .nav-card:hover .nav-card__arrow,
+  .nav-card:focus-visible .nav-card__arrow {
+    transform: translateX(4px);
+  }
+</style>

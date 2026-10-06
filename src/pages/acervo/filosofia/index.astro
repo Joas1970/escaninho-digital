@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageIntro from "../../../components/PageIntro.astro";
+---
+
+<BaseLayout
+  title="Filosofia"
+  description="Textos, conceitos e propostas de atividade para introduzir o pensamento filosófico, organizados pelo Escaninho Digital."
+  path="/acervo/filosofia/"
+>
+  <section class="section">
+    <div class="container">
+      <PageIntro
+        eyebrow="Acervo · Filosofia"
+        title="Filosofia"
+        text="Espaço dedicado a textos, conceitos e propostas de atividade para introduzir e aprofundar o pensamento filosófico em sala de aula."
+      />
+      <div class="content-block">
+        <p>
+          Esta seção está em construção. Aqui serão organizados, aos poucos,
+          materiais, recomendações e recursos relacionados ao ensino de
+          Filosofia — sempre com curadoria e contextualização.
+        </p>
+        <p>
+          Se você procura um recurso específico ou quer sugerir um material,
+          utilize a página de <a href="/contato/">Contato</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 56ch;
+  }
+</style>

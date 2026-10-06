@@ -1,0 +1,112 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import NavCard from "../components/NavCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getFeaturedProjects } from "../data/projects";
+
+const featuredProjects = getFeaturedProjects();
+---
+
+<BaseLayout
+  title="Início"
+  description="O Escaninho Digital reúne recursos, experiências e materiais educacionais para apoiar professores e estudantes em diferentes caminhos de aprendizagem."
+  path="/"
+>
+  <Hero
+    eyebrow="Acervo · Educação · Humanidades"
+    title="Um espaço para ensinar, aprender e compartilhar."
+    text="O Escaninho Digital reúne recursos, experiências e materiais educacionais para apoiar professores e estudantes em diferentes caminhos de aprendizagem."
+    image="/images/hero-escaninho.png"
+    imageAlt="Mesa de trabalho com livros de História, Filosofia e Humanidades, um busto clássico, um globo terrestre e um notebook."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Explore o Escaninho</p>
+        <h2>Três caminhos para começar</h2>
+      </div>
+      <div class="card-grid card-grid--3">
+        <NavCard
+          title="Acervo"
+          description="Materiais e referências de História, Filosofia e atividades adaptadas."
+          href="/acervo/"
+        >
+          <Fragment slot="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 19.5V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v14" />
+              <path d="M6.5 3v16a2 2 0 0 0 2 2h9.5" />
+              <path d="M8 7h7" />
+              <path d="M8 11h7" />
+            </svg>
+          </Fragment>
+        </NavCard>
+
+        <NavCard
+          title="Espaço Docente"
+          description="Reflexões, práticas e apoio para o trabalho cotidiano do professor."
+          href="/espaco-docente/"
+        >
+          <Fragment slot="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="12" rx="1" />
+              <path d="M8 20h8" />
+              <path d="M12 16v4" />
+              <path d="M7 9h10" />
+            </svg>
+          </Fragment>
+        </NavCard>
+
+        <NavCard
+          title="Projetos"
+          description="Iniciativas do ecossistema educacional, apresentadas e contextualizadas."
+          href="/projetos/"
+        >
+          <Fragment slot="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="1" />
+              <rect x="14" y="3" width="7" height="7" rx="1" />
+              <rect x="3" y="14" width="7" height="7" rx="1" />
+              <rect x="14" y="14" width="7" height="7" rx="1" />
+            </svg>
+          </Fragment>
+        </NavCard>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Projetos em destaque</p>
+        <h2>Iniciativas do ecossistema educacional</h2>
+        <p>
+          Estes cards apresentam projetos independentes do mesmo ecossistema
+          educacional. Eles não significam que o código ou todo o conteúdo
+          desses projetos esteja armazenado no Escaninho Digital.
+        </p>
+      </div>
+      <div class="card-grid card-grid--3">
+        {featuredProjects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .card-grid {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .card-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 860px) {
+    .card-grid--3 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

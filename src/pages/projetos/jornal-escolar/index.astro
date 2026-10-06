@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageIntro from "../../../components/PageIntro.astro";
+import { getProjectBySlug } from "../../../data/projects";
+
+const project = getProjectBySlug("jornal-escolar");
+if (!project) throw new Error("Projeto não encontrado: jornal-escolar");
+---
+
+<BaseLayout
+  title={project.title}
+  description={project.description}
+  path="/projetos/jornal-escolar/"
+  image={project.image}
+>
+  <section class="section">
+    <div class="container">
+      <PageIntro
+        eyebrow={`Projeto · ${project.category}`}
+        title={project.title}
+        text={project.description}
+      />
+      <img
+        src={project.image}
+        alt={project.imageAlt}
+        width="960"
+        height="600"
+        class="project-image"
+      />
+      <div class="content-block">
+        <p>
+          O Jornal Escolar é uma iniciativa de produção textual e midiática
+          conduzida por estudantes, com apoio docente, para registrar a vida
+          escolar e dar protagonismo às vozes da comunidade. É um projeto em
+          formação dentro do ecossistema do Escaninho Digital.
+        </p>
+        <p>
+          Quer saber mais ou propor uma parceria? Entre em contato pela
+          página de <a href="/contato/">Contato</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 56ch;
+  }
+
+  .project-image {
+    width: 100%;
+    max-width: 48rem;
+    height: auto;
+    border-radius: var(--radius);
+    margin-bottom: var(--space-lg);
+  }
+</style>
