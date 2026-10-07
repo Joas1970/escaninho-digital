@@ -25,41 +25,59 @@ const { eyebrow, title, text, image, imageAlt } = Astro.props;
 
 <style>
   .hero {
-    padding-block: var(--space-xl) var(--space-lg);
+    container-type: inline-size;
+    padding-block: clamp(3rem, 6vw, 5rem);
     border-bottom: 1px solid var(--color-border);
   }
 
   .hero__inner {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: var(--space-lg);
+    grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+    gap: clamp(2rem, 4vw, 3rem);
     align-items: center;
   }
 
   .hero__title {
     font-size: clamp(1.9rem, 3.2vw, 2.75rem);
-    max-width: 18ch;
+    max-width: 17ch;
+    letter-spacing: -0.025em;
+  }
+
+  .hero__content {
+    min-width: 0;
+  }
+
+  .hero__content .eyebrow {
+    color: var(--color-gold-text);
+    letter-spacing: 0.1em;
   }
 
   .hero__text {
     max-width: 42ch;
     color: var(--color-text);
+    margin-bottom: 0;
   }
 
   .hero__media img {
     border-radius: var(--radius);
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
   }
 
-  @media (max-width: 860px) {
+  /* Stack before the side-by-side composition becomes compressed. */
+  @container (max-width: 55rem) {
     .hero__inner {
       grid-template-columns: 1fr;
     }
 
+    .hero__title {
+      max-width: 22ch;
+    }
+
     .hero__media {
-      order: -1;
+      width: 100%;
+      justify-self: center;
     }
   }
 </style>

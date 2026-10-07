@@ -3,6 +3,8 @@
   --color-text: #333334;
   --color-gray: #b9b9b8;
   --color-gold: #ab9061;
+  --color-gold-text: #79633d;
+  --color-text-muted: #686867;
   --color-bg: #ffffff;
   --color-bg-muted: #faf9f7;
   --color-border: #e3e1dd;
@@ -100,7 +102,7 @@ ul {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-gold-text);
   margin-bottom: var(--space-sm);
 }
 
@@ -162,10 +164,16 @@ button:focus-visible {
 .card-grid {
   display: grid;
   gap: var(--space-md);
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
   .card-grid {
     grid-template-columns: 1fr;
   }

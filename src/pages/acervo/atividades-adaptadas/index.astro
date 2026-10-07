@@ -1,6 +1,10 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageIntro from "../../../components/PageIntro.astro";
+import ResourceGrid from "../../../components/ResourceGrid.astro";
+import { getResourcesByCollection } from "../../../data/resources";
+
+const collectionResources = getResourcesByCollection("atividades-adaptadas");
 ---
 
 <BaseLayout
@@ -15,19 +19,23 @@ import PageIntro from "../../../components/PageIntro.astro";
         title="Atividades adaptadas"
         text="Recursos pensados para diferentes ritmos, formas de aprender e necessidades específicas em sala de aula."
       />
-      <div class="content-block">
-        <p>
-          Esta seção está em construção. Aqui serão organizados, aos poucos,
-          materiais e propostas de atividades adaptadas, com atenção à
-          inclusão e à diversidade de formas de aprendizagem.
+      <section aria-labelledby="collection-resources-title">
+        <h2 id="collection-resources-title">Recursos da coleção</h2>
+        <ResourceGrid resources={collectionResources} />
+        <p class="related-project">
+          Conheça também o projeto{" "}
+          <a href="https://www.montarparaaprender.com.br" target="_blank" rel="noopener noreferrer">
+            Montar para Aprender<span aria-hidden="true"> ↗</span>
+            <span class="sr-only"> (site externo, abre em nova aba)</span>
+          </a>.
         </p>
-        <p>
-          O projeto <a href="/projetos/montar-para-aprender/">Montar para
-          Aprender</a> aprofunda esse tema com recursos próprios — vale a
-          pena conhecê-lo.
-        </p>
-      </div>
+      </section>
     </div>
   </section>
 </BaseLayout>
 
+
+<style>
+  .related-project { margin-top: 2rem; max-width: 56ch; color: var(--color-text-muted); }
+  .related-project a { color: var(--color-text); text-underline-offset: 0.2em; }
+</style>

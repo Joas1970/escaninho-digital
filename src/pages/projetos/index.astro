@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageIntro from "../../components/PageIntro.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
+import ProjectGrid from "../../components/ProjectGrid.astro";
 import { projects } from "../../data/projects";
 ---
 
@@ -15,11 +15,12 @@ import { projects } from "../../data/projects";
       <PageIntro
         eyebrow="Projetos"
         title="Iniciativas do ecossistema educacional"
-        text="O Escaninho apresenta, organiza e encaminha para projetos independentes. O código-fonte e o conteúdo integral de cada projeto permanecem em seus próprios domínios e repositórios."
+        text="O Escaninho apresenta iniciativas educacionais independentes, cada uma com seus próprios objetivos e ambientes. Aqui, você encontra uma apresentação de suas propostas e, quando disponível, o acesso ao projeto."
       />
-      <div class="card-grid">
-        {projects.map((project) => <ProjectCard project={project} />)}
-      </div>
+      <section aria-labelledby="projetos-title">
+        <h2 id="projetos-title">Projetos educacionais</h2>
+        <ProjectGrid projects={projects} />
+      </section>
     </div>
   </section>
 </BaseLayout>

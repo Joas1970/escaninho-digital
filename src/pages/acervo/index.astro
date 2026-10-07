@@ -2,6 +2,11 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageIntro from "../../components/PageIntro.astro";
 import NavCard from "../../components/NavCard.astro";
+import ResourceGrid from "../../components/ResourceGrid.astro";
+import { getFeaturedResources, getSources } from "../../data/resources";
+
+const featuredResources = getFeaturedResources().slice(0, 3);
+const sources = getSources();
 ---
 
 <BaseLayout
@@ -13,11 +18,13 @@ import NavCard from "../../components/NavCard.astro";
     <div class="container">
       <PageIntro
         eyebrow="Acervo"
-        title="Materiais e referências para a sala de aula"
-        text="O Acervo reúne conteúdos próprios do Escaninho Digital, organizados por área, para apoiar o planejamento e a prática docente."
+        title="Acervo"
+        text="Curadoria e organização de recursos educacionais para apoiar o planejamento e a prática docente, com materiais do Escaninho e de diferentes fontes e projetos."
       />
 
-      <div class="card-grid">
+      <section aria-labelledby="areas-title">
+      <h2 id="areas-title">Explore por área</h2>
+      <div class="card-grid acervo-areas">
         <NavCard
           title="História"
           description="Referências, linhas do tempo e materiais de apoio para o ensino de História."
@@ -34,6 +41,25 @@ import NavCard from "../../components/NavCard.astro";
           href="/acervo/atividades-adaptadas/"
         />
       </div>
+      </section>
+      {featuredResources.length > 0 && (
+        <section class="acervo-featured" aria-labelledby="resources-title">
+          <h2 id="resources-title">Recursos em destaque</h2>
+          <ResourceGrid resources={featuredResources} featuredPresentation />
+        </section>
+      )}
+      {sources.length > 0 && (
+        <section class="acervo-featured" aria-labelledby="sources-title">
+          <h2 id="sources-title">Coleções e fontes</h2>
+          <ResourceGrid resources={sources} featuredPresentation />
+        </section>
+      )}
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  h2 { font-size: clamp(1.5rem, 2.4vw, 1.875rem); margin-bottom: 2rem; }
+  .acervo-featured { margin-top: 4rem; }
+  @media (max-width: 900px) { .acervo-areas { grid-template-columns: 1fr; } }
+</style>

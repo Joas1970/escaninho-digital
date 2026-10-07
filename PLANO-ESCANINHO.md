@@ -56,7 +56,7 @@ repositório.
 |---|---|
 | `professorjoas.com.br` | Identidade profissional, autoria e trajetória do professor |
 | `montarparaaprender.com.br` | Projeto pedagógico específico (recursos visuais, inclusão) |
-| `escaninhodigital.com.br` | Hub de curadoria, organização, descoberta e acesso a conteúdos e projetos |
+| `https://www.escaninhodigital.com.br` | Hub de curadoria, organização, descoberta e acesso a conteúdos e projetos |
 
 Os três ambientes são complementares; evitar duplicar páginas, textos ou
 código entre eles.

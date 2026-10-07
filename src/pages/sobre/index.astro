@@ -13,29 +13,58 @@ import PageIntro from "../../components/PageIntro.astro";
       <PageIntro
         eyebrow="Sobre"
         title="Sobre o Escaninho Digital"
-        text="Um hub de curadoria educacional — não um repositório de código de outros projetos."
+        text="Um projeto educacional de curadoria, organização e descoberta de recursos e experiências em Educação e Humanidades."
       />
       <div class="content-block">
-        <p>
-          O Escaninho Digital é um projeto educacional voltado à organização,
-          curadoria e compartilhamento de recursos relacionados à educação,
-          à História, à Filosofia, às Humanidades, à tecnologia educacional e
-          à prática docente.
-        </p>
-        <p>
-          O Escaninho apresenta, de forma organizada e contextualizada,
-          projetos e iniciativas independentes do mesmo ecossistema
-          educacional — como o <a href="/projetos/">Montar para Aprender, o
-          Acervo Visual de Humanidades e o Jornal Escolar</a>. Quando
-          necessário, o visitante é redirecionado ao projeto original.
-        </p>
-        <p>
-          Para saber mais sobre quem desenvolve este e outros projetos do
-          ecossistema, visite a página do
-          <a href="/sobre/professor-joas-alves/">Professor Joas Alves</a>.
-        </p>
+        <section aria-labelledby="proposito-title">
+          <h2 id="proposito-title">Propósito</h2>
+          <p>
+            O Escaninho Digital procura reunir, contextualizar e organizar
+            recursos e experiências que possam contribuir para o ensino,
+            a aprendizagem e a prática docente.
+          </p>
+        </section>
+        <section aria-labelledby="organizacao-title">
+          <h2 id="organizacao-title">Organização e princípios</h2>
+          <p>
+            No <a href="/acervo/">Acervo</a>, recursos, fontes e materiais
+            relacionados especialmente às Humanidades são organizados para
+            facilitar sua descoberta. O <a href="/espaco-docente/">Espaço Docente</a>{" "}
+            reúne reflexões sobre prática docente, metodologias, inclusão e
+            tecnologia. A seção Projetos apresenta e contextualiza iniciativas
+            educacionais independentes relacionadas ao trabalho desenvolvido.{" "}
+            <a href="/projetos/">Conheça os projetos</a>.
+          </p>
+          <p>
+            Essa organização valoriza a contextualização dos recursos, a
+            identificação de suas fontes quando aplicável e o respeito à
+            autonomia dos diferentes projetos.
+          </p>
+        </section>
+        <section aria-labelledby="autoria-title">
+          <h2 id="autoria-title">Autoria</h2>
+          <p>
+            O Escaninho Digital é uma iniciativa concebida e mantida por
+            Joás Alves, responsável por sua organização e curadoria.{" "}
+            <a href="/sobre/professor-joas-alves/">Conheça mais sobre o autor</a>.
+          </p>
+        </section>
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .content-block > section + section {
+    margin-top: var(--space-md);
+  }
+
+  .content-block h2 {
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  }
+
+  .content-block section > p:last-child {
+    margin-bottom: 0;
+  }
+</style>
 

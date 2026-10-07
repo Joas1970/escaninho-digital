@@ -1,0 +1,27 @@
+---
+import type { Resource } from "../data/resources";
+import ResourceCard from "./ResourceCard.astro";
+
+interface Props {
+  resources: Resource[];
+  emptyMessage?: string;
+  featuredPresentation?: boolean;
+}
+
+const { resources, emptyMessage = "Ainda não há recursos cadastrados nesta coleção.", featuredPresentation = false } = Astro.props;
+---
+
+{resources.length > 0 ? (
+  <div class:list={["resource-grid", { "resource-grid--single-featured": featuredPresentation && resources.length === 1 }]}>
+    {resources.map((resource) => <ResourceCard resource={resource} featuredPresentation={featuredPresentation} />)}
+  </div>
+) : <p class="resource-grid__empty">{emptyMessage}</p>}
+
+<style>
+  .resource-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+  .resource-grid__empty { max-width: 56ch; color: var(--color-text-muted); }
+  @media (max-width: 900px) { .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .resource-grid { grid-template-columns: 1fr; } }
+  .resource-grid--single-featured { grid-template-columns: minmax(0, 26rem); }
+  @media (max-width: 600px) { .resource-grid--single-featured { grid-template-columns: 1fr; } }
+</style>

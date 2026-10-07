@@ -1,6 +1,11 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageIntro from "../../../components/PageIntro.astro";
+import ResourceGrid from "../../../components/ResourceGrid.astro";
+import { getResourcesByCollection, getSourcesByCollection } from "../../../data/resources";
+
+const collectionResources = getResourcesByCollection("filosofia");
+const collectionSources = getSourcesByCollection("filosofia");
 ---
 
 <BaseLayout
@@ -15,18 +20,21 @@ import PageIntro from "../../../components/PageIntro.astro";
         title="Filosofia"
         text="Espaço dedicado a textos, conceitos e propostas de atividade para introduzir e aprofundar o pensamento filosófico em sala de aula."
       />
-      <div class="content-block">
-        <p>
-          Esta seção está em construção. Aqui serão organizados, aos poucos,
-          materiais, recomendações e recursos relacionados ao ensino de
-          Filosofia — sempre com curadoria e contextualização.
-        </p>
-        <p>
-          Se você procura um recurso específico ou quer sugerir um material,
-          utilize a página de <a href="/contato/">Contato</a>.
-        </p>
-      </div>
+      <section aria-labelledby="collection-resources-title">
+        <h2 id="collection-resources-title">Recursos</h2>
+        <ResourceGrid resources={collectionResources} />
+      </section>
+      {collectionSources.length > 0 && (
+        <section class="related-sources" aria-labelledby="related-sources-title">
+          <h2 id="related-sources-title">Coleções e fontes relacionadas</h2>
+          <ResourceGrid resources={collectionSources} featuredPresentation />
+        </section>
+      )}
     </div>
   </section>
 </BaseLayout>
 
+
+<style>
+  .related-sources { margin-top: 4rem; }
+</style>

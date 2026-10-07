@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import NavCard from "../components/NavCard.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
 import { getFeaturedProjects } from "../data/projects";
 
 const featuredProjects = getFeaturedProjects();
@@ -21,11 +21,11 @@ const featuredProjects = getFeaturedProjects();
     imageAlt="Mesa de trabalho com livros de História, Filosofia e Humanidades, um busto clássico, um globo terrestre e um notebook."
   />
 
-  <section class="section">
+  <section class="section home-section home-explore" aria-labelledby="explore-title">
     <div class="container">
       <div class="section-header">
-        <p class="eyebrow">Explore o Escaninho</p>
-        <h2>Três caminhos para começar</h2>
+        <h2 id="explore-title">Explore o Escaninho</h2>
+        <p>Três caminhos para começar.</p>
       </div>
       <div class="card-grid">
         <NavCard
@@ -76,20 +76,61 @@ const featuredProjects = getFeaturedProjects();
     </div>
   </section>
 
-  <section class="section section--muted">
+  <section class="section section--muted home-section" aria-labelledby="featured-title">
     <div class="container">
       <div class="section-header">
-        <p class="eyebrow">Projetos em destaque</p>
-        <h2>Iniciativas do ecossistema educacional</h2>
+        <h2 id="featured-title">Projetos em destaque</h2>
         <p>
-          Estes cards apresentam projetos independentes do mesmo ecossistema
-          educacional. Eles não significam que o código ou todo o conteúdo
-          desses projetos esteja armazenado no Escaninho Digital.
+          Uma seleção de iniciativas e experiências educacionais para conhecer,
+          acompanhar e ampliar as possibilidades de ensinar e aprender.
         </p>
       </div>
-      <div class="card-grid">
-        {featuredProjects.map((project) => <ProjectCard project={project} />)}
-      </div>
+      <ProjectGrid projects={featuredProjects} />
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .home-section {
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .home-section .section-header {
+    max-width: 60ch;
+    margin-bottom: 2rem;
+  }
+
+  .home-section h2 {
+    font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .home-section .section-header p {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  .home-section :global(.card-grid) {
+    gap: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .home-explore :global(.nav-card) {
+    padding: clamp(1.5rem, 3vw, 2rem);
+    gap: 0.75rem;
+  }
+
+  .home-explore :global(.nav-card__title) {
+    font-size: 1.125rem;
+  }
+
+  .home-explore :global(.nav-card__description) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .home-explore :global(.card-grid) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

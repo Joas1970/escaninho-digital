@@ -2,7 +2,7 @@
 
 export const site = {
   name: "Escaninho Digital",
-  url: "https://escaninhodigital.com.br",
+  url: "https://www.escaninhodigital.com.br",
   description:
     "Acervo digital de curadoria educacional com recursos, projetos e materiais de História, Filosofia e Humanidades para professores e estudantes.",
   locale: "pt_BR",

@@ -2,6 +2,16 @@
 import { mainNav, site } from "../data/site";
 
 const year = new Date().getFullYear();
+const footerNav = [
+  ...mainNav,
+  { label: "Contato", href: "/contato/" },
+];
+const ecosystem = [
+  { label: "Montar para Aprender", href: "https://www.montarparaaprender.com.br" },
+  { label: "Humanidades em Foco", href: "https://acervo.professorjoas.com.br" },
+  { label: "Saber em Jogo", href: "https://saber.professorjoas.com.br" },
+  { label: "Jornal Escolar", href: "https://jornal.professorjoas.com.br" },
+];
 ---
 
 <footer class="site-footer">
@@ -9,15 +19,15 @@ const year = new Date().getFullYear();
     <div class="site-footer__brand">
       <p class="site-footer__title">{site.name}</p>
       <p class="site-footer__tagline">
-        Curadoria e organização de recursos educacionais em História,
-        Filosofia e Humanidades.
+        Curadoria de recursos e experiências em Educação e Humanidades.
       </p>
     </div>
 
     <nav class="site-footer__nav" aria-label="Links do rodapé">
+      <p class="site-footer__heading">Navegação</p>
       <ul class="site-footer__list">
         {
-          mainNav.map((item) => (
+          footerNav.map((item) => (
             <li>
               <a href={item.href}>{item.label}</a>
             </li>
@@ -25,27 +35,39 @@ const year = new Date().getFullYear();
         }
       </ul>
     </nav>
+
+    <nav aria-label="Projetos do ecossistema educacional">
+      <p class="site-footer__heading">Ecossistema</p>
+      <ul class="site-footer__list">
+        {ecosystem.map((item) => (
+          <li><a href={item.href} target="_blank" rel="noopener noreferrer">
+            {item.label}<span class="sr-only"> (site externo, abre em nova aba)</span>
+          </a></li>
+        ))}
+      </ul>
+    </nav>
   </div>
 
   <div class="container">
     <p class="site-footer__copy">
-      © {year} {site.name}. Todos os direitos reservados.
+      © {year} {site.name} · Projeto educacional independente de{" "}
+      <a href="https://www.professorjoas.com.br" target="_blank" rel="noopener noreferrer">Joás Alves<span class="sr-only"> (site profissional externo, abre em nova aba)</span></a>.
     </p>
   </div>
 </footer>
 
 <style>
   .site-footer {
+    overflow-wrap: anywhere;
     border-top: 1px solid var(--color-border);
     background: var(--color-bg-muted);
     padding-block: var(--space-lg) var(--space-md);
   }
 
   .site-footer__inner {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: var(--space-lg);
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-md);
     margin-bottom: var(--space-lg);
   }
 
@@ -58,32 +80,74 @@ const year = new Date().getFullYear();
     margin-bottom: var(--space-xs);
   }
 
+  .site-footer__heading {
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
   .site-footer__tagline {
-    color: var(--color-gray);
+    color: var(--color-text-muted);
     margin: 0;
   }
 
   .site-footer__list {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-md);
+    display: grid;
+    gap: 0.125rem;
   }
 
   .site-footer__list a {
     text-decoration: none;
-    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: 0.375rem;
+    font-size: 1rem;
     color: var(--color-text);
   }
 
   .site-footer__list a:hover {
-    color: var(--color-gold);
+    color: var(--color-gold-text);
+  }
+
+  .site-footer__copy a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-footer__copy a:hover,
+  .site-footer__copy a:focus {
+    color: var(--color-gold-text);
+  }
+
+  .site-footer a:focus-visible {
+    outline-color: var(--color-gold-text);
+  }
+
+  .site-footer__copy a:focus-visible {
+    outline: 2px solid var(--color-gold-text);
+    outline-offset: 2px;
   }
 
   .site-footer__copy {
     font-size: 0.85rem;
-    color: var(--color-gray);
+    color: var(--color-text-muted);
     border-top: 1px solid var(--color-border);
     padding-top: var(--space-md);
+  }
+
+  @media (max-width: 1000px) {
+    .site-footer__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .site-footer__brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

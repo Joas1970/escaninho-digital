@@ -1,0 +1,131 @@
+---
+import { hasResourceDestination, type Resource } from "../data/resources";
+
+interface Props {
+  resource: Resource;
+  featuredPresentation?: boolean;
+}
+
+const { resource, featuredPresentation = false } = Astro.props;
+const isSource = resource.kind === "source";
+const pedagogicalLabels = {
+  "experiencia-aplicada": "Experiência aplicada",
+  "proposta-pedagogica": "Proposta pedagógica",
+  "recurso-de-referencia": "Recurso de referência",
+};
+const pedagogicalLabel = !isSource && resource.pedagogicalStatus
+  ? pedagogicalLabels[resource.pedagogicalStatus]
+  : undefined;
+const available = hasResourceDestination(resource);
+const external = resource.external ?? /^https?:\/\//i.test(resource.url ?? "");
+const linkProps = external ? { target: "_blank", rel: "noopener noreferrer" } : {};
+---
+
+<article class:list={["resource-card", { "resource-card--featured": featuredPresentation }]}>
+  {(!featuredPresentation || resource.image) && <div class="resource-card__media">
+    {resource.image ? (
+      <img src={resource.image} alt={resource.imageAlt ?? `Imagem do recurso ${resource.title}`} width="640" height="400" loading="lazy" />
+    ) : (
+      <div class="resource-card__placeholder" aria-hidden="true">Recurso educacional</div>
+    )}
+  </div>}
+  <div class="resource-card__body">
+    {isSource && <p class="resource-card__source">Coleção/fonte</p>}
+    {(resource.area || resource.type || resource.educationLevel) && (
+      <p class="resource-card__meta">{[resource.area, resource.type, resource.educationLevel].filter(Boolean).join(" · ")}</p>
+    )}
+    <h3>{resource.title}</h3>
+    <p>{resource.description}</p>
+    {pedagogicalLabel && <p class="resource-card__source">{pedagogicalLabel}</p>}
+    {resource.source && <p class="resource-card__source">Fonte: {resource.source}</p>}
+    {(resource.tags?.length ?? 0) > 0 && (
+      <ul class="resource-card__tags" aria-label={`Temas de ${resource.title}`}>
+        {(resource.tags ?? []).map((tag) => <li>{tag}</li>)}
+      </ul>
+    )}
+    <div class="resource-card__action">
+      {available ? (
+        <>
+          {external && <p class="resource-card__source" aria-hidden="true">Site externo ↗</p>}
+          <a href={resource.url?.trim()} {...linkProps}>
+            {isSource ? "Explorar acervo" : "Acessar recurso"}<span class="sr-only">: {resource.title}{external && " (site externo, abre em nova aba)"}</span>
+            <span aria-hidden="true"> →</span>
+          </a>
+        </>
+      ) : <span class="resource-card__source">Em desenvolvimento</span>}
+    </div>
+  </div>
+</article>
+
+<style>
+  .resource-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg);
+    transition: border-color var(--transition);
+    overflow-wrap: anywhere;
+  }
+  .resource-card:hover { border-color: var(--color-gold); }
+  .resource-card__media { aspect-ratio: 16 / 10; }
+  .resource-card__media img { width: 100%; height: 100%; object-fit: cover; }
+  .resource-card__placeholder {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    background: var(--color-bg-muted);
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+  }
+  .resource-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.75rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+  }
+  .resource-card h3 { font-size: 1.1rem; margin: 0; }
+  .resource-card p { margin: 0; }
+  .resource-card__meta { color: var(--color-gold-text); font-size: 0.8rem; }
+  .resource-card__source { color: var(--color-text-muted); font-size: 0.85rem; }
+  .resource-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; }
+  .resource-card__tags li {
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-muted);
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+  }
+  .resource-card__action { margin-top: auto; padding-top: 0.75rem; }
+  .resource-card__action a { display: inline-block; margin-top: 0.25rem; font-weight: 600; text-underline-offset: 0.2em; }
+  .resource-card__action a:hover { color: var(--color-gold-text); }
+  .resource-card--featured .resource-card__body {
+    gap: 1rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+  .resource-card--featured h3 {
+    font-size: 1.25rem;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+  }
+  .resource-card--featured .resource-card__meta {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .resource-card--featured .resource-card__action {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .resource-card--featured .resource-card__action a {
+    margin-top: 0;
+    font-size: 0.95rem;
+  }
+</style>

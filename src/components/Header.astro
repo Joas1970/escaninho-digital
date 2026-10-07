@@ -144,7 +144,7 @@ function isActive(href: string) {
 
   .site-nav__link:hover,
   .site-nav__link[aria-current="page"] {
-    color: var(--color-gold);
+    color: var(--color-gold-text);
     border-color: var(--color-gold);
   }
 
@@ -180,7 +180,18 @@ function isActive(href: string) {
 
   .site-nav__sublink:hover {
     background: var(--color-bg-muted);
-    color: var(--color-gold);
+    color: var(--color-gold-text);
+  }
+
+  .site-nav__sublink:focus-visible {
+    outline-color: var(--color-gold-text);
+  }
+
+  @media (min-width: 861px) {
+    .site-nav__item:last-child .site-nav__submenu {
+      left: auto;
+      right: 0;
+    }
   }
 
   @media (max-width: 860px) {
@@ -226,9 +237,30 @@ function isActive(href: string) {
 <script>
   const toggle = document.getElementById("nav-toggle");
   const nav = document.getElementById("primary-navigation");
+  const toggleLabel = toggle?.querySelector(".sr-only");
+
+  function setMenuOpen(isOpen: boolean) {
+    nav?.classList.toggle("is-open", isOpen);
+    toggle?.setAttribute("aria-expanded", String(isOpen));
+    if (toggleLabel) toggleLabel.textContent = isOpen ? "Fechar menu" : "Abrir menu";
+  }
 
   toggle?.addEventListener("click", () => {
-    const isOpen = nav?.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+    setMenuOpen(!nav?.classList.contains("is-open"));
   });
+
+  function closeMenuOnEscape(event: KeyboardEvent) {
+    if (
+      event.key === "Escape" &&
+      window.matchMedia("(max-width: 860px)").matches &&
+      nav?.classList.contains("is-open")
+    ) {
+      event.preventDefault();
+      setMenuOpen(false);
+      toggle?.focus();
+    }
+  }
+
+  toggle?.addEventListener("keydown", closeMenuOnEscape);
+  nav?.addEventListener("keydown", closeMenuOnEscape);
 </script>

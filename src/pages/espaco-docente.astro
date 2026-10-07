@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageIntro from "../components/PageIntro.astro";
+
+// Copie a imagem para este caminho e execute o build novamente ao publicar.
+const imagePath = "/images/espaco-docente/espaco-docente.png";
 ---
 
 <BaseLayout
@@ -15,19 +18,107 @@ import PageIntro from "../components/PageIntro.astro";
         title="Espaço Docente"
         text="Um espaço voltado à prática e à reflexão docente: planejamento, metodologias, formação continuada e trocas entre professores."
       />
-      <div class="content-block">
-        <p>
-          Esta seção está em construção. A proposta é reunir aqui reflexões e
-          recursos de apoio à prática docente — não um repositório de
-          materiais prontos, mas um espaço de reflexão sobre o ofício de
-          ensinar.
-        </p>
-        <p>
-          Sugestões de pauta ou de conteúdo podem ser enviadas pela página de
-          <a href="/contato/">Contato</a>.
-        </p>
+      <div class="docente-image">
+        <img src={imagePath} alt="" width="1600" height="800" />
       </div>
+      <section class="content-block docente-editorial" aria-labelledby="pratica-title">
+        <h2 id="pratica-title">Um espaço para pensar a prática</h2>
+        <p>
+          O Espaço Docente reúne reflexões, experiências e referências relacionadas
+          ao cotidiano de ensinar. Mais do que oferecer materiais prontos, a
+          proposta é compartilhar caminhos, metodologias e ideias que possam
+          contribuir para o planejamento e para a prática pedagógica.
+        </p>
+      </section>
+      <section class="docente-eixos" aria-labelledby="eixos-title">
+        <h2 id="eixos-title">Eixos editoriais</h2>
+        <div class="docente-eixos__grid">
+          <div>
+            <h3>Prática docente</h3>
+            <p>Experiências, planejamento e reflexões surgidas do cotidiano escolar.</p>
+          </div>
+          <div>
+            <h3>Metodologias e inclusão</h3>
+            <p>Adaptações, estratégias de participação e possibilidades de aprendizagem.</p>
+          </div>
+          <div>
+            <h3>Tecnologia e educação</h3>
+            <p>Uso pedagógico de ferramentas digitais, inteligência artificial e recursos interativos.</p>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .docente-image {
+    margin-bottom: var(--space-lg);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .docente-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 8;
+    object-fit: cover;
+    /* Ajuste o enquadramento aqui após inserir a imagem definitiva. */
+    object-position: center;
+  }
+
+  .docente-editorial h2 {
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  }
+
+  .docente-editorial p {
+    margin-bottom: 0;
+  }
+
+  .docente-eixos {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .docente-eixos h2 {
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    margin-bottom: var(--space-md);
+  }
+
+  .docente-eixos__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .docente-eixos__grid h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  .docente-eixos__grid p {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 1001px) {
+    .docente-eixos__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .docente-eixos {
+      margin-top: var(--space-md);
+    }
+
+    .docente-image {
+      margin-bottom: var(--space-md);
+    }
+
+    .docente-image img {
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>
 
