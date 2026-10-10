@@ -1,0 +1,29 @@
+---
+import { WordSearchApp } from "../../../features/caca-palavras/components/word-search-app";
+import "../../../features/caca-palavras/styles.css";
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Caça-palavras · Escaninho Digital</title>
+    <meta name="description" content="Crie e jogue caça-palavras personalizados. Compartilhe com a turma por link ou QR code e imprima atividades com gabarito." />
+    <link rel="canonical" href="https://www.escaninhodigital.com.br/atividades/caca-palavras/" />
+    <meta property="og:title" content="Caça-palavras · Escaninho Digital" />
+    <meta property="og:description" content="Personalize, jogue, compartilhe e imprima atividades para sua turma." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.escaninhodigital.com.br/images/resources/caca-palavras.webp" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,640&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-paper font-sans text-ink antialiased">
+    <nav class="no-print border-b border-line bg-sheet px-4 py-3" aria-label="Voltar ao acervo">
+      <a class="inline-flex min-h-11 items-center underline underline-offset-4" href="/acervo/atividades-e-jogos/">← Atividades e jogos · Escaninho Digital</a>
+    </nav>
+    <WordSearchApp client:load />
+    <noscript><p>Ative o JavaScript do navegador para criar e jogar o caça-palavras.</p></noscript>
+  </body>
+</html>

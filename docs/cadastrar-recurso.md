@@ -81,5 +81,5 @@ e sem situação pedagógica atribuída. Recursos sem URL aparecem em “Em prep
 História e Filosofia são temas: use `area` ou `tags`, não coleções por disciplina.
 Use `adapted: true` apenas quando o recurso oferecer adaptações verificadas; o card exibirá “Atividade adaptada”.
 O campo opcional `buttonLabel` permite uma ação específica, como “Criar caça-palavras”.
-O caça-palavras está cadastrado sem URL até a confirmação de seu endereço público.
+O caça-palavras está publicado em `/atividades/caca-palavras/`. Seu código de navegador fica isolado em `src/features/caca-palavras/`; veja `docs/caca-palavras.md`.
 Os antigos endereços de História, Filosofia e Atividades adaptadas redirecionam para as novas coleções.

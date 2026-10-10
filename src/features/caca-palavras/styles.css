@@ -1,0 +1,207 @@
+@import "tailwindcss" source(none);
+@source "./components";
+@source "../../pages/atividades/caca-palavras";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+
+  --color-paper: #e7ebdf;
+  --color-sheet: #f4f6ef;
+  --color-ink: #1b2330;
+  --color-muted: #3f4854;
+  --color-line: #c5ccb8;
+  --color-cobalt: #3a49c4;
+  --color-cobalt-soft: #d9def8;
+  --color-brass: #a89060;
+  --color-brass-soft: #efe4cf;
+  --color-heart: #b42318;
+  --color-heart-soft: #f3d6d2;
+  --color-chip: #1b2330;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cobalt);
+    outline-offset: 2px;
+  }
+
+  h1,
+  h2 {
+    text-wrap: balance;
+  }
+}
+
+@keyframes cell-shake {
+  0%,
+  100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+
+@keyframes chip-pop {
+  0% { transform: scale(0.96); }
+  45% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animate-shake {
+  animation: cell-shake 0.35s ease;
+}
+
+.animate-pop {
+  animation: chip-pop 0.28s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shake,
+  .animate-pop {
+    animation: none;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  html, body, main {
+    background: white !important;
+    color: black !important;
+    min-height: 0 !important;
+    font-family: Arial, sans-serif;
+  }
+
+  main > div:first-child {
+    display: none;
+  }
+
+  main > div:nth-child(2) {
+    display: block;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .a4-sheet {
+    break-inside: avoid;
+    font-size: 10pt;
+    line-height: 1.25;
+  }
+
+  .a4-sheet + .a4-sheet {
+    break-before: page;
+  }
+
+  .a4-brand {
+    margin: 0 0 3mm;
+    font-size: 9pt;
+  }
+
+  .a4-sheet h1 {
+    margin: 0 0 4mm;
+    font-family: Arial, sans-serif;
+    font-size: 18pt;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .a4-identification {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2mm 5mm;
+    overflow-wrap: anywhere;
+  }
+
+  .a4-date { margin: 2mm 0; }
+  .a4-prompt { margin: 3mm 0; overflow-wrap: anywhere; }
+
+  .a4-image {
+    display: block;
+    width: 100%;
+    height: 24mm;
+    object-fit: contain;
+    margin: 3mm auto;
+  }
+
+  .a4-grid {
+    display: grid;
+    width: 100mm;
+    max-width: 100%;
+    margin: 4mm auto;
+    border-top: 0.2mm solid black;
+    border-left: 0.2mm solid black;
+    break-inside: avoid;
+  }
+
+  .a4-grid span {
+    display: flex;
+    aspect-ratio: 1;
+    align-items: center;
+    justify-content: center;
+    border-right: 0.2mm solid black;
+    border-bottom: 0.2mm solid black;
+    font-size: 10pt;
+  }
+
+  .a4-marked {
+    background: #ddd !important;
+    font-weight: 900;
+    text-decoration: underline;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .a4-bank-title { margin: 3mm 0 2mm; font-weight: bold; }
+  .a4-words {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5mm 3mm;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 9pt;
+    overflow-wrap: anywhere;
+  }
+
+  .a4-record { margin: 4mm 0; font-weight: bold; }
+  .a4-notes { margin-top: 5mm; font-size: 9pt; }
+  .a4-compact h1 { font-size: 16pt; }
+  .a4-compact .a4-grid { width: 84mm; }
+  .a4-compact .a4-image { height: 20mm; }
+  .a4-compact .a4-words { grid-template-columns: repeat(4, minmax(0, 1fr)); font-size: 8pt; gap: 1mm 3mm; }
+}
