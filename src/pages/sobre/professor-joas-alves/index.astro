@@ -15,10 +15,19 @@ import PageIntro from "../../../components/PageIntro.astro";
         title="Professor Joas Alves"
         text="Professor responsável pela concepção e curadoria do Escaninho Digital e dos demais projetos do ecossistema."
       />
+      <img
+        class="professor-photo"
+        src="/images/professor-joas-alves.png"
+        alt="Retrato do professor Joás Alves"
+        width="1920"
+        height="1080"
+        fetchpriority="high"
+        decoding="async"
+      />
       <div class="content-block">
         <p>
           A identidade profissional, a trajetória e a produção completa do
-          professor Joas Alves estão apresentadas em
+          professor Joas Alves estão apresentadas em{" "}
           <a
             href="https://www.professorjoas.com.br"
             target="_blank"
@@ -37,3 +46,13 @@ import PageIntro from "../../../components/PageIntro.astro";
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .professor-photo {
+    width: 100%;
+    max-width: 48rem;
+    height: auto;
+    margin-bottom: var(--space-md);
+    border-radius: var(--radius);
+  }
+</style>
