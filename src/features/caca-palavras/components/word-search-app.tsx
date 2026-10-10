@@ -693,11 +693,12 @@ export function WordSearchApp() {
                     draft.lives === count ? "border-ink bg-ink text-sheet" : "border-line bg-sheet",
                   )}
                 >
-                  {count === 0 ? "Sem" : count}
+                  {count === 0 ? "Sem limite" : count}
                 </button>
               ))}
             </div>
 
+            <p className="mt-2 text-sm text-muted">Com vidas limitadas, o jogo para quando elas acabam. Escolha Sem limite para jogar sem essa interrupção.</p>
             <button
               type="button"
               aria-pressed={draft.timer}

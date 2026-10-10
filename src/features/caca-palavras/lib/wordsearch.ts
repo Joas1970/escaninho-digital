@@ -153,6 +153,19 @@ function placeAll(
           const endRow = row + dr * (word.normalized.length - 1);
           const endCol = col + dc * (word.normalized.length - 1);
           if (endRow < 0 || endCol < 0 || endRow >= size || endCol >= size) continue;
+          // Keep a cell between words on the same axis, including reverse words.
+          // Perpendicular/diagonal crossings remain allowed.
+          const joinsWord = placements.some((placed) => {
+            if (dr * placed.dc !== dc * placed.dr) return false;
+            const offsetRow = placed.row - row;
+            const offsetCol = placed.col - col;
+            if (offsetRow * dc !== offsetCol * dr) return false;
+            const start = dr !== 0 ? offsetRow / dr : offsetCol / dc;
+            const direction = placed.dr * dr + placed.dc * dc > 0 ? 1 : -1;
+            const end = start + direction * (placed.normalized.length - 1);
+            return Math.max(start, end) >= -1 && Math.min(start, end) <= word.normalized.length;
+          });
+          if (joinsWord) continue;
           let ok = true;
           for (let i = 0; i < word.normalized.length; i++) {
             const existing = letters[row + dr * i][col + dc * i];
