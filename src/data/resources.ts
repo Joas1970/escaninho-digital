@@ -1,8 +1,11 @@
-export type ResourceCollection = "historia" | "filosofia" | "atividades-adaptadas";
+export type ResourceCollection = "atividades-e-jogos" | "materiais-de-apoio";
 
 export type Resource = {
   kind?: "resource" | "source";
   pedagogicalStatus?: "experiencia-aplicada" | "proposta-pedagogica" | "recurso-de-referencia";
+  /** Marque apenas quando houver adaptações verificadas no material. */
+  adapted?: boolean;
+  buttonLabel?: string;
   title: string;
   description: string;
   collections: ResourceCollection[];
@@ -25,9 +28,21 @@ export type Resource = {
 // Um recurso pode pertencer a várias coleções sem duplicar seu cadastro.
 export const resources: Resource[] = [
   {
+    title: "Caça-palavras — Escaninho Digital",
+    collections: ["atividades-e-jogos"],
+    type: "Caça-palavras",
+    description: "Personalize palavras e instruções, jogue no navegador e prepare atividades para compartilhar ou imprimir.",
+    buttonLabel: "Criar caça-palavras",
+    external: true,
+    featured: true,
+    tags: ["Atividade interativa", "Para imprimir"],
+    source: "Escaninho Digital",
+  },
+  {
     title: "Humanidades em Foco — Acervo Visual Educacional",
     kind: "source",
-    collections: ["historia", "filosofia"],
+    collections: ["materiais-de-apoio"],
+    tags: ["História", "Filosofia", "Humanidades"],
     type: "Acervo visual",
     image: "/images/projects/d6LeZ.jpg",
     imageAlt: "Composição em tons de cinza com templos clássicos, um busto, mapas e páginas de textos conectados por linhas.",
@@ -38,7 +53,7 @@ export const resources: Resource[] = [
   },
   {
     title: "Imagem Interativa",
-    collections: ["atividades-adaptadas"],
+    collections: ["atividades-e-jogos"],
     type: "Ferramenta interativa",
     description: "Ferramenta para criação de atividades com imagens, hotspots, exploração visual e avaliação.",
     external: true,
@@ -46,7 +61,7 @@ export const resources: Resource[] = [
   },
   {
     title: "Quebra-cabeça Montar para Aprender",
-    collections: ["atividades-adaptadas"],
+    collections: ["atividades-e-jogos"],
     type: "Ferramenta interativa",
     description: "Modelo reutilizável para criação de quebra-cabeças educacionais a partir de imagens, com diferentes níveis de dificuldade e recursos de acessibilidade.",
     external: true,

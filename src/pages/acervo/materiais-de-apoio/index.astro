@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageIntro from "../../../components/PageIntro.astro";
+import ResourceGrid from "../../../components/ResourceGrid.astro";
+import { getResourcesByCollection, getSourcesByCollection, hasResourceDestination } from "../../../data/resources";
+const resources = getResourcesByCollection("materiais-de-apoio");
+const available = resources.filter(hasResourceDestination);
+const upcoming = resources.filter(r => !hasResourceDestination(r));
+const sources = getSourcesByCollection("materiais-de-apoio").filter(hasResourceDestination);
+---
+<BaseLayout title="Materiais de apoio" description="Explore materiais de consulta e coleções de referência para apoiar o planejamento, o estudo e a prática docente." path="/acervo/materiais-de-apoio/">
+  <section class="section">
+    <div class="container">
+      <PageIntro eyebrow="Acervo" title="Materiais de apoio" text="Explore materiais de consulta e coleções de referência para apoiar o planejamento, o estudo e a prática docente." />
+      {available.length > 0 && <section aria-labelledby="resources-title">
+        <h2 id="resources-title">Recursos disponíveis</h2>
+        <ResourceGrid resources={available} featuredPresentation />
+      </section>}
+      {sources.length > 0 && <section aria-labelledby="sources-title">
+        <h2 id="sources-title">Coleções e fontes</h2>
+        <ResourceGrid resources={sources} featuredPresentation />
+      </section>}
+      {upcoming.length > 0 && <section aria-labelledby="upcoming-title">
+        <h2 id="upcoming-title">Em preparação</h2>
+        <p class="section-note">Conheça as ferramentas em preparação. O acesso será disponibilizado aqui quando estiverem publicadas.</p>
+        <ResourceGrid resources={upcoming} />
+      </section>}
+      <p class="back-link"><a href="/acervo/">← Explorar todo o acervo</a></p>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .container > section + section { margin-top: 4rem; }
+  h2 { font-size: clamp(1.5rem, 2.4vw, 1.875rem); margin-bottom: 1.5rem; }
+  .section-note { max-width: 60ch; margin-bottom: 2rem; color: var(--color-text-muted); }
+  .back-link { margin-top: 3rem; }
+</style>

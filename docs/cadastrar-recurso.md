@@ -8,7 +8,7 @@ Os recursos são cadastrados uma única vez em `src/data/resources.ts`.
    seu conteúdo em `imageAlt`. Sem imagem, o card usa um placeholder discreto.
 2. Abra `src/data/resources.ts` e adicione um objeto ao array `resources`.
 3. Preencha `title`, `description` e `collections`. As coleções aceitas são
-   `historia`, `filosofia` e `atividades-adaptadas`.
+   `atividades-e-jogos` e `materiais-de-apoio`.
 4. Informe uma URL confirmada. Para uma página interna existente, use um
    caminho como `/caminho/` com `external: false`. Para outro site, use a URL
    completa com `external: true`.
@@ -23,7 +23,7 @@ Os recursos são cadastrados uma única vez em `src/data/resources.ts`.
 {
   title: "Título do material real",
   description: "Descrição curta que explica a finalidade do recurso.",
-  collections: ["historia", "atividades-adaptadas"],
+  collections: ["atividades-e-jogos"],
   area: "História",
   type: "Atividade",
   educationLevel: "Ensino Médio",
@@ -71,8 +71,15 @@ omita o campo. A situação pedagógica não representa avaliação metodológic
 formal e é independente da existência de uma URL pública.
 
 Humanidades em Foco é uma coleção/fonte, apresentada em “Coleções e fontes”
-e nas fontes relacionadas de História e Filosofia. Não entra nos destaques
+e em Materiais de apoio. Não entra nos destaques
 individuais, mesmo com `featured: true`. Mantém sua imagem e URL canônica.
 Imagem Interativa e Quebra-cabeça Montar para Aprender permanecem sem URL
-e sem situação pedagógica atribuída. Coleções sem recursos mostram uma
-mensagem curta; a seção de destaques individuais vazia fica oculta.
+e sem situação pedagógica atribuída. Recursos sem URL aparecem em “Em preparação”; seções vazias ficam ocultas.
+
+## Organização por formato
+
+História e Filosofia são temas: use `area` ou `tags`, não coleções por disciplina.
+Use `adapted: true` apenas quando o recurso oferecer adaptações verificadas; o card exibirá “Atividade adaptada”.
+O campo opcional `buttonLabel` permite uma ação específica, como “Criar caça-palavras”.
+O caça-palavras está cadastrado sem URL até a confirmação de seu endereço público.
+Os antigos endereços de História, Filosofia e Atividades adaptadas redirecionam para as novas coleções.

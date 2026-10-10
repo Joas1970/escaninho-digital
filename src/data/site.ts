@@ -4,7 +4,7 @@ export const site = {
   name: "Escaninho Digital",
   url: "https://www.escaninhodigital.com.br",
   description:
-    "Acervo digital de curadoria educacional com recursos, projetos e materiais de História, Filosofia e Humanidades para professores e estudantes.",
+    "Atividades, jogos e materiais de apoio para professores e estudantes, reunidos em um acervo de curadoria educacional.",
   locale: "pt_BR",
 };
 
@@ -27,9 +27,9 @@ export const mainNav: NavItem[] = [
     label: "Acervo",
     href: "/acervo/",
     children: [
-      { label: "História", href: "/acervo/historia/" },
-      { label: "Filosofia", href: "/acervo/filosofia/" },
-      { label: "Atividades adaptadas", href: "/acervo/atividades-adaptadas/" },
+      { label: "Atividades e jogos", href: "/acervo/atividades-e-jogos/" },
+      { label: "Materiais de apoio", href: "/acervo/materiais-de-apoio/" },
+      { label: "Explorar o acervo", href: "/acervo/" },
     ],
   },
   { label: "Espaço Docente", href: "/espaco-docente/" },

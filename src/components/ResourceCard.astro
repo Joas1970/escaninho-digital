@@ -36,6 +36,7 @@ const linkProps = external ? { target: "_blank", rel: "noopener noreferrer" } : 
     )}
     <h3>{resource.title}</h3>
     <p>{resource.description}</p>
+    {resource.adapted && <p class="resource-card__source">Atividade adaptada</p>}
     {pedagogicalLabel && <p class="resource-card__source">{pedagogicalLabel}</p>}
     {resource.source && <p class="resource-card__source">Fonte: {resource.source}</p>}
     {(resource.tags?.length ?? 0) > 0 && (
@@ -48,7 +49,7 @@ const linkProps = external ? { target: "_blank", rel: "noopener noreferrer" } : 
         <>
           {external && <p class="resource-card__source" aria-hidden="true">Site externo ↗</p>}
           <a href={resource.url?.trim()} {...linkProps}>
-            {isSource ? "Explorar acervo" : "Acessar recurso"}<span class="sr-only">: {resource.title}{external && " (site externo, abre em nova aba)"}</span>
+            {resource.buttonLabel ?? (isSource ? "Explorar acervo" : "Acessar recurso")}<span class="sr-only">: {resource.title}{external && " (site externo, abre em nova aba)"}</span>
             <span aria-hidden="true"> →</span>
           </a>
         </>

@@ -1,3 +1,9 @@
+# Organização atual do Acervo
+
+O Acervo é organizado por formato: Atividades e jogos e Materiais de apoio. Explorar o acervo reúne os recursos disponíveis. História e Filosofia são temas dos materiais. Os endereços antigos redirecionam para as novas coleções. Consulte docs/cadastrar-recurso.md para novos cadastros.
+
+> O plano abaixo registra a estrutura anterior e serve como histórico.
+
 # PLANO — Escaninho Digital (nova versão)
 
 > Documento de arquitetura e planejamento. A estrutura inicial descrita aqui

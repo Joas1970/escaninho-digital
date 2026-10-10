@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/acervo/historia",
+      "destination": "/acervo/materiais-de-apoio/",
+      "permanent": true
+    },
+    {
+      "source": "/acervo/filosofia",
+      "destination": "/acervo/materiais-de-apoio/",
+      "permanent": true
+    },
+    {
+      "source": "/acervo/atividades-adaptadas",
+      "destination": "/acervo/atividades-e-jogos/",
+      "permanent": true
+    }
+  ]
+}

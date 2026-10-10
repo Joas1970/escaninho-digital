@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageIntro from "../../../components/PageIntro.astro";
+import ResourceGrid from "../../../components/ResourceGrid.astro";
+import { getResourcesByCollection, getSourcesByCollection, hasResourceDestination } from "../../../data/resources";
+const resources = getResourcesByCollection("atividades-e-jogos");
+const available = resources.filter(hasResourceDestination);
+const upcoming = resources.filter(r => !hasResourceDestination(r));
+const sources = getSourcesByCollection("atividades-e-jogos").filter(hasResourceDestination);
+---
+<BaseLayout title="Atividades e jogos" description="Jogos educativos e ferramentas para criar, compartilhar e imprimir atividades, com possibilidades para diferentes conteúdos e formas de aprender." path="/acervo/atividades-e-jogos/">
+  <section class="section">
+    <div class="container">
+      <PageIntro eyebrow="Acervo" title="Atividades e jogos" text="Jogos educativos e ferramentas para criar, compartilhar e imprimir atividades, com possibilidades para diferentes conteúdos e formas de aprender." />
+      {available.length > 0 && <section aria-labelledby="resources-title">
+        <h2 id="resources-title">Recursos disponíveis</h2>
+        <ResourceGrid resources={available} featuredPresentation />
+      </section>}
+      {sources.length > 0 && <section aria-labelledby="sources-title">
+        <h2 id="sources-title">Coleções e fontes</h2>
+        <ResourceGrid resources={sources} featuredPresentation />
+      </section>}
+      {upcoming.length > 0 && <section aria-labelledby="upcoming-title">
+        <h2 id="upcoming-title">Em preparação</h2>
+        <p class="section-note">Conheça as ferramentas em preparação. O acesso será disponibilizado aqui quando estiverem publicadas.</p>
+        <ResourceGrid resources={upcoming} />
+      </section>}
+      <p class="back-link"><a href="/acervo/">← Explorar todo o acervo</a></p>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .container > section + section { margin-top: 4rem; }
+  h2 { font-size: clamp(1.5rem, 2.4vw, 1.875rem); margin-bottom: 1.5rem; }
+  .section-note { max-width: 60ch; margin-bottom: 2rem; color: var(--color-text-muted); }
+  .back-link { margin-top: 3rem; }
+</style>
