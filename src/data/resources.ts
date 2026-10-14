@@ -28,6 +28,18 @@ export type Resource = {
 // Um recurso pode pertencer a várias coleções sem duplicar seu cadastro.
 export const resources: Resource[] = [
   {
+    title: "Palavras cruzadas — Escaninho Digital",
+    collections: ["atividades-e-jogos"],
+    type: "Palavras cruzadas",
+    description: "Resolva cruzadinhas de História e Filosofia no modo aluno, com dicas e salvamento do progresso no navegador.",
+    buttonLabel: "Resolver cruzadinha",
+    url: "/atividades/cruzadinha/",
+    external: false,
+    featured: true,
+    tags: ["História", "Filosofia", "Atividade interativa"],
+    source: "Escaninho Digital",
+  },
+  {
     title: "Caça-palavras — Escaninho Digital",
     collections: ["atividades-e-jogos"],
     type: "Caça-palavras",

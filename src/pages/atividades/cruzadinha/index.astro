@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+const activityUrl = "https://cruzadinha-escaninho.vercel.app/?modo=aluno";
+---
+<BaseLayout title="Palavras cruzadas" description="Resolva cruzadinhas de História e Filosofia no modo aluno. Leia as dicas, preencha a grade e continue de onde parou." path="/atividades/cruzadinha/">
+  <section class="crossword-page">
+    <div class="container">
+      <nav class="crossword-nav" aria-label="Navegação da atividade">
+        <a href="/acervo/atividades-e-jogos/">← Atividades e jogos</a>
+        <a id="crossword-open" href={activityUrl} target="_blank" rel="noopener noreferrer">Abrir em tela inteira ↗</a>
+      </nav>
+      <h1>Palavras cruzadas</h1>
+      <p class="crossword-intro">História e Filosofia: escolha um tema, leia as dicas e complete a grade. A atividade abre no modo aluno, sem Revelar, Gabarito ou editor.</p>
+      <p class="crossword-note">Seu progresso fica neste navegador. Se a atividade não aparecer ou o salvamento estiver bloqueado, use “Abrir em tela inteira”.</p>
+    </div>
+    <div class="crossword-frame-wrap">
+      <iframe id="crossword-frame" data-cruzadinha-embed src={`${activityUrl}&incorporar=1`} title="Palavras cruzadas de História e Filosofia — modo aluno" width="100%" height="1400" allow="fullscreen" loading="eager"></iframe>
+    </div>
+    <noscript><p class="container">Ative o JavaScript para jogar ou <a href={activityUrl}>abra a atividade em outra aba</a>.</p></noscript>
+  </section>
+</BaseLayout>
+<script>
+  const frame = document.getElementById("crossword-frame") as HTMLIFrameElement | null;
+  const openLink = document.getElementById("crossword-open") as HTMLAnchorElement | null;
+  if (frame && openLink) {
+    const target = new URL("https://cruzadinha-escaninho.vercel.app/");
+    const incoming = new URL(window.location.href);
+    // Preserve lesson links while always keeping the public page in student mode.
+    target.searchParams.set("modo", "aluno");
+    for (const key of ["tema", "conferir"]) {
+      const value = incoming.searchParams.get(key);
+      if (value !== null) target.searchParams.set(key, value);
+    }
+    if (incoming.hash.startsWith("#atividade=")) target.hash = incoming.hash;
+    openLink.href = target.href;
+    target.searchParams.set("incorporar", "1");
+    if (frame.src !== target.href) frame.src = target.href;
+    window.addEventListener("message", (event) => {
+      if (event.origin !== target.origin || event.source !== frame.contentWindow || event.data?.type !== "escaninho:crossword:resize") return;
+      const height = event.data.height;
+      if (typeof height === "number" && Number.isFinite(height) && height >= 100 && height <= 16000) frame.style.height = `${Math.ceil(height) + 4}px`;
+    });
+  }
+</script>
+<style>
+  .crossword-page { padding-block: 2rem 3rem; }
+  .crossword-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+  .crossword-nav a { display: inline-flex; min-height: 44px; align-items: center; }
+  h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 0.75rem; }
+  .crossword-intro { max-width: 75ch; }
+  .crossword-note { color: var(--color-text-muted); font-size: 0.875rem; margin-block: 0.75rem 1.5rem; }
+  .crossword-frame-wrap { max-width: 1280px; margin-inline: auto; border-block: 1px solid var(--color-border); }
+  iframe { display: block; border: 0; width: 100%; }
+  @media print { .crossword-nav, .crossword-intro, .crossword-note { display: none; } }
+</style>
