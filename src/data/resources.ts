@@ -34,6 +34,8 @@ export const resources: Resource[] = [
     description: "Resolva cruzadinhas de História e Filosofia no modo aluno, com dicas e salvamento do progresso no navegador.",
     buttonLabel: "Resolver cruzadinha",
     url: "/atividades/cruzadinha/",
+    image: "/images/resources/cruzadinha.webp",
+    imageAlt: "Cruzadinha em papel com as palavras História, Conhecimento, Filosofia e Aprendizagem e um lápis.",
     external: false,
     featured: true,
     tags: ["História", "Filosofia", "Atividade interativa"],
