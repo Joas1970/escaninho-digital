@@ -6,6 +6,7 @@ export type Resource = {
   /** Marque apenas quando houver adaptações verificadas no material. */
   adapted?: boolean;
   buttonLabel?: string;
+  secondaryAction?: { label: string; url: string; external?: boolean };
   title: string;
   description: string;
   collections: ResourceCollection[];
@@ -31,9 +32,14 @@ export const resources: Resource[] = [
     title: "Palavras cruzadas — Escaninho Digital",
     collections: ["atividades-e-jogos"],
     type: "Palavras cruzadas",
-    description: "Resolva cruzadinhas de História e Filosofia no modo aluno, com dicas e salvamento do progresso no navegador.",
+    description: "Professores podem criar e compartilhar cruzadinhas por link, WhatsApp ou QR code. Alunos resolvem os temas no navegador.",
     buttonLabel: "Resolver cruzadinha",
     url: "/atividades/cruzadinha/",
+    secondaryAction: {
+      label: "Criar e compartilhar atividade",
+      url: "https://cruzadinha-escaninho.vercel.app/?modo=professor",
+      external: true,
+    },
     image: "/images/resources/cruzadinha.webp",
     imageAlt: "Cruzadinha em papel com as palavras História, Conhecimento, Filosofia e Aprendizagem e um lápis.",
     external: false,

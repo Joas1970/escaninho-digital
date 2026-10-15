@@ -30,6 +30,11 @@ const imagePath = "/images/espaco-docente/espaco-docente.png";
           contribuir para o planejamento e para a prática pedagógica.
         </p>
       </section>
+      <section class="docente-eixos" aria-labelledby="crossword-teacher-title">
+        <h2 id="crossword-teacher-title">Crie e compartilhe palavras cruzadas</h2>
+        <p>Prepare uma atividade com suas palavras e dicas e compartilhe com os alunos por link, WhatsApp ou QR code. A área do professor também permite imprimir e apresentar a atividade para a turma.</p>
+        <a class="docente-tool-link" href="https://cruzadinha-escaninho.vercel.app/?modo=professor" target="_blank" rel="noopener noreferrer">Criar e compartilhar atividade <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
+      </section>
       <section class="docente-eixos" aria-labelledby="eixos-title">
         <h2 id="eixos-title">Eixos editoriais</h2>
         <div class="docente-eixos__grid">
@@ -85,6 +90,7 @@ const imagePath = "/images/espaco-docente/espaco-docente.png";
     font-size: clamp(1.4rem, 2.5vw, 1.85rem);
     margin-bottom: var(--space-md);
   }
+  .docente-tool-link { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; margin-top: 0.75rem; font-weight: 600; }
 
   .docente-eixos__grid {
     display: grid;

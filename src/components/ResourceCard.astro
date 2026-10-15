@@ -54,6 +54,16 @@ const linkProps = external ? { target: "_blank", rel: "noopener noreferrer" } : 
           </a>
         </>
       ) : <span class="resource-card__source">Em desenvolvimento</span>}
+      {resource.secondaryAction && <a
+        class="resource-card__secondary-link"
+        href={resource.secondaryAction.url}
+        target={resource.secondaryAction.external ? "_blank" : undefined}
+        rel={resource.secondaryAction.external ? "noopener noreferrer" : undefined}
+      >
+        {resource.secondaryAction.label}
+        <span class="sr-only">: {resource.title}{resource.secondaryAction.external && " (abre em nova aba)"}</span>
+        {resource.secondaryAction.external && <span aria-hidden="true"> ↗</span>}
+      </a>}
     </div>
   </div>
 </article>
@@ -103,6 +113,20 @@ const linkProps = external ? { target: "_blank", rel: "noopener noreferrer" } : 
   .resource-card__action { margin-top: auto; padding-top: 0.75rem; }
   .resource-card__action a { display: inline-block; margin-top: 0.25rem; font-weight: 600; text-underline-offset: 0.2em; }
   .resource-card__action a:hover { color: var(--color-gold-text); }
+  .resource-card__action .resource-card__secondary-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-muted);
+    color: var(--color-text);
+    text-align: center;
+  }
   .resource-card--featured .resource-card__body {
     gap: 1rem;
     padding: clamp(1.5rem, 3vw, 2rem);
