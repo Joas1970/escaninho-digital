@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageIntro from "../components/PageIntro.astro";
+import { CROSSWORD_APP_URL } from "../data/activities";
 
 // Copie a imagem para este caminho e execute o build novamente ao publicar.
 const imagePath = "/images/espaco-docente/espaco-docente.png";
@@ -33,7 +34,7 @@ const imagePath = "/images/espaco-docente/espaco-docente.png";
       <section class="docente-eixos" aria-labelledby="crossword-teacher-title">
         <h2 id="crossword-teacher-title">Crie e compartilhe palavras cruzadas</h2>
         <p>Prepare uma atividade com suas palavras e dicas e compartilhe com os alunos por link, WhatsApp ou QR code. A área do professor também permite imprimir e apresentar a atividade para a turma.</p>
-        <a class="docente-tool-link" href="https://cruzadinha-escaninho.vercel.app/?modo=professor" target="_blank" rel="noopener noreferrer">Criar e compartilhar atividade <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
+        <a class="docente-tool-link" href={`${CROSSWORD_APP_URL}/?modo=professor`} target="_blank" rel="noopener noreferrer">Criar e compartilhar atividade <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
       </section>
       <section class="docente-eixos" aria-labelledby="eixos-title">
         <h2 id="eixos-title">Eixos editoriais</h2>

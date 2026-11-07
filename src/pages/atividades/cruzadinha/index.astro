@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-const activityUrl = "https://cruzadinha-escaninho.vercel.app/?modo=aluno";
-const teacherUrl = "https://cruzadinha-escaninho.vercel.app/?modo=professor";
+import { CROSSWORD_APP_URL } from "../../../data/activities";
+const activityUrl = `${CROSSWORD_APP_URL}/?modo=aluno`;
+const teacherUrl = `${CROSSWORD_APP_URL}/?modo=professor`;
 ---
 <BaseLayout title="Palavras cruzadas" description="Resolva cruzadinhas de História e Filosofia no modo aluno. Leia as dicas, preencha a grade e continue de onde parou." path="/atividades/cruzadinha/" image="/images/resources/cruzadinha.webp">
   <section class="crossword-page">
@@ -48,7 +49,7 @@ const teacherUrl = "https://cruzadinha-escaninho.vercel.app/?modo=professor";
   const frame = document.getElementById("crossword-frame") as HTMLIFrameElement | null;
   const openLink = document.getElementById("crossword-open") as HTMLAnchorElement | null;
   if (frame && openLink) {
-    const target = new URL("https://cruzadinha-escaninho.vercel.app/");
+    const target = new URL(frame.src);
     const incoming = new URL(window.location.href);
     // Preserve lesson links while always keeping the public page in student mode.
     target.searchParams.set("modo", "aluno");

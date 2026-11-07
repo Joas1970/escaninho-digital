@@ -1,3 +1,5 @@
+import { CROSSWORD_APP_URL } from "./activities";
+
 export type ResourceCollection = "atividades-e-jogos" | "materiais-de-apoio";
 
 export type Resource = {
@@ -37,7 +39,7 @@ export const resources: Resource[] = [
     url: "/atividades/cruzadinha/",
     secondaryAction: {
       label: "Criar e compartilhar atividade",
-      url: "https://cruzadinha-escaninho.vercel.app/?modo=professor",
+      url: `${CROSSWORD_APP_URL}/?modo=professor`,
       external: true,
     },
     image: "/images/resources/cruzadinha.webp",
